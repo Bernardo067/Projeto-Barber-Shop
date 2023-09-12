@@ -1,0 +1,28 @@
+<div class="redefinir-senha-container">
+    <mat-card class="redefinir-senha-card">
+      <mat-card-header>
+        <mat-card-title>Redefinir Senha</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Nova Senha" [(ngModel)]="novaSenha" name="novaSenha">
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Confirme a Nova Senha" [(ngModel)]="confirmarSenha" name="confirmarSenha">
+        </mat-form-field>
+      </mat-card-content>
+  
+      <!-- Mensagens de Aviso -->
+      <div *ngIf="mostrarMensagem" class="mensagem-sucesso">
+        {{ mostrarMensagem ?  'Preencha os campos acima.':'Sua senha foi registrada com sucesso!' }}
+      </div>
+  
+      <mat-card-actions class="button-container">
+        <button mat-button (click)="confirmarRedefinicao()">Confirmar</button>
+        <button mat-button (click)="cancelarRedefinicao()">Cancelar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,38 @@
+/* redefinir-senha.component.scss */
+
+.redefinir-senha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Defina a altura mínima para ocupar toda a altura da tela */
+    background-image: url('/../assets/cadastro.png'); /* Substitua pelo caminho da sua imagem de fundo */
+    background-size: cover; /* Para cobrir todo o contêiner com a imagem */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-position: center; /* Centraliza a imagem no contêiner */
+  }
+  
+  .redefinir-senha-card {
+    width: 400px; /* Largura do card */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do card */
+    border-radius: 8px; /* Cantos arredondados */
+    background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência */
+    text-align: center; /* Alinhamento de texto central */
+  }
+  
+  .full-width {
+    width: 100%; /* Isso garante que os campos de entrada ocupem toda a largura do card */
+  }
+  
+  .mensagem-sucesso {
+    color: #510202; /* Cor do texto verde para a mensagem de sucesso */
+    font-weight: bold;
+    margin-top: 10px; /* Margem superior para separar a mensagem */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Botões separados à direita e à esquerda */
+    margin-top: 20px; /* Margem superior para separar os botões */
+  }
+  

@@ -1,0 +1,61 @@
+/* login.component.scss */
+
+.login-container {
+  display: flex;
+  justify-content: flex-start; /* Alinhe o conteúdo no lado esquerdo */
+  align-items: center; /* Centralize verticalmente */
+  min-height: 100vh;
+  background-image: url('/../assets/login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-card {
+  width: 600px;
+  padding: 30px;
+  margin-left: 20px; /* Ajuste a margem esquerda conforme necessário */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  color: #580303;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-button-base {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* login.component.scss */
+
+.aviso-cadastro,
+.aviso-recuperar-senha {
+text-align: center; /* Centralize o texto */
+margin-top: 10px; /* Espaçamento superior para separar das entradas */
+font-size: 14px; /* Tamanho da fonte */
+color: #555; /* Cor do texto cinza */
+}
+
+.aviso-recuperar-senha a {
+color: #007bff; /* Cor do link azul */
+text-decoration: none; /* Remova a sublinhado do link */
+cursor: pointer; /* Mude o cursor ao passar sobre o link */
+}
+
+.aviso-recuperar-senha a:hover {
+text-decoration: underline; /* Adicione sublinhado ao passar sobre o link */
+}
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Espaçamento igual entre os botões */
+  margin-top: 20px; /* Espaçamento superior entre os botões e as entradas */
+}
+
+.button-container button {
+  flex: 1; /* Botões ocupam o mesmo espaço horizontalmente */
+  margin: 7 5px; /* Margens horizontais entre os botões */
+}
