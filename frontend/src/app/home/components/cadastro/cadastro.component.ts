@@ -1,5 +1,7 @@
+import { CadastroService } from './../../service/cadastro.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../../model/usuario';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,20 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
-  mostrarMensagem: boolean = false; // Adicione esta propriedade
+  mostrarMensagem: boolean = false;
+  registrationRequest: Usuario = {
+    nome: '',
+    sobrenome: '',
+    email: '',
+    senha: ''
+  };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cadastroService: CadastroService) {}
 
   nome: string = '';
   email: string = '';
-  cpfCnpj: string = '';
+  sobrenome: string = '';
   senha: string = '';
   confirmarSenha: string = '';
+
 
   realizarCadastro() {
 
     if (this.validarCampos()) {
-      console.log('Realizar Cadastro: Nome:', this.nome, 'E-mail:', this.email, 'CPF/CNPJ:', this.cpfCnpj, 'Senha:', this.senha);
+      console.log('Realizar Cadastro: Nome:', this.nome,'sobrenome', this.sobrenome, 'E-mail:', this.email, 'Senha:', this.senha);
 
 
       this.router.navigate(['/Login']);
@@ -32,7 +41,7 @@ export class CadastroComponent implements OnInit {
   }
 
   validarCampos(): boolean {
-    if (!this.nome || !this.email || !this.cpfCnpj || !this.senha || !this.confirmarSenha) {
+    if (!this.nome || !this.email || !this.sobrenome || !this.senha || !this.confirmarSenha) {
       return false;
     }
     if (this.senha !== this.confirmarSenha) {
@@ -48,5 +57,9 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  onSubmit() {
+    this.cadastroService.register(this.registrationRequest)
   }
 }
