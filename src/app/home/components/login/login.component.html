@@ -1,0 +1,27 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Usuário" [(ngModel)]="usuario" name="usuario">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="Senha" [(ngModel)]="senha" name="senha">
+      </mat-form-field>
+    </mat-card-content>
+
+    <!-- Mensagens de Aviso -->
+    <div class="aviso-recuperar-senha">
+      Esqueceu sua senha? <a routerLink="#" (click)="redefinirSenha()">Clique aqui</a>
+    </div>
+    
+    <mat-card-actions class="button-container">
+      <button mat-button (click)="entrar()">Entrar</button>
+      <button mat-button routerLink="/Cadastro">Cadastro</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

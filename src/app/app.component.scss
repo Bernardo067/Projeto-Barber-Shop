@@ -1,0 +1,16 @@
+/* app.component.css (ou app.component.scss) */
+
+mat-toolbar {
+    background-color:  rgba(0, 0, 0, 0.931); /* Define a cor de fundo como preta */
+    color: rgb(243, 236, 236); /* Define a cor do texto como branca */
+  }
+  /* Seu arquivo de estilo do componente (por exemplo, app.component.scss) */
+  
+  .mat-toolbar {
+    display: flex;
+    height: 64px; /* Altura da barra de ferramentas */
+    background-color: #0c0b0b; /* Cor de fundo preta (altere conforme necessário) */
+    color: #fff; /* Cor do texto branca (altere conforme necessário) */
+    font-size: 35px; /* Tamanho da fonte (altere conforme necessário) */
+  }
+  
