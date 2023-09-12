@@ -4,44 +4,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Defina a altura mínima para ocupar toda a altura da tela */
+  min-height: 100vh;
   background-image: url('/../assets/cadastro.png');
-  /* Substitua 'sua-imagem-de-fundo.jpg' pelo nome da sua imagem */
-  background-size: cover; /* Para cobrir todo o contêiner com a imagem */
-  background-repeat: no-repeat; /* Evita a repetição da imagem */
-  background-position: center; /* Centraliza a imagem no contêiner */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* Estilo para os botões */
+
 .mat-button-base {
-  color: #000; /* Cor do texto preta */
-  background-color: #fff; /* Cor de fundo branca - ajuste conforme necessário */
+  color: #000;
+  background-color: #fff;
   &:hover {
-    background-color: #eee; /* Cor de fundo cinza claro ao passar o mouse - ajuste conforme necessário */
+    background-color: #eee;
   }
 }
 
 .cadastro-card {
-  width: 400px; /* Largura do card */
-  padding: 20px; /* Espaçamento interno */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do card */
-  border-radius: 8px; /* Cantos arredondados */
-  background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência */
-  text-align: center; /* Alinhamento de texto central */
+  width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 
 .full-width {
-  width: 100%; /* Isso garante que os campos de entrada ocupem toda a largura do card */
+  width: 100%;
 }
 
 .mensagem-aviso {
-  margin-top: 10px; /* Espaçamento superior para separar da seção de campos de entrada */
-  color: rgb(255, 243, 243); /* Cor do texto vermelha para indicar um aviso */
-  font-size: 16px; /* Tamanho da fonte */
-  font-weight: bold; /* Texto em negrito */
-  background-color: rgb(96, 13, 0); /* Cor de fundo amarela clara para destacar o aviso */
-  border: 1px solid rgb(8, 8, 8); /* Borda vermelha */
-  border-radius: 4px; /* Cantos arredondados */
-  padding: 10px; /* Espaçamento interno */
-  text-align: center; /* Alinhamento de texto central */
+  margin-top: 10px;
+  color: rgb(255, 243, 243);
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgb(96, 13, 0);
+  border: 1px solid rgb(8, 8, 8);
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
 }
