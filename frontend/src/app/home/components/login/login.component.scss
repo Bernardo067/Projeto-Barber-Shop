@@ -1,0 +1,61 @@
+
+
+.login-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('/../assets/login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-card {
+  width: 600px;
+  padding: 30px;
+  margin-left: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  color: #580303;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-button-base {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.aviso-cadastro,
+.aviso-recuperar-senha {
+text-align: center;
+margin-top: 10px;
+font-size: 14px;
+color: #555;
+}
+
+.aviso-recuperar-senha a {
+color: #007bff;
+text-decoration: none;
+cursor: pointer;
+}
+
+.aviso-recuperar-senha a:hover {
+text-decoration: underline;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-container button {
+  flex: 1;
+  margin: 7 5px;
+}

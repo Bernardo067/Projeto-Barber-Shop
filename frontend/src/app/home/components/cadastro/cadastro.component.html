@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title>Cadastro</mat-card-title>
     </mat-card-header>
-    
+
     <div *ngIf="mostrarMensagem" class="mensagem-aviso">
       Por favor, preencha todos os campos!
     </div>
@@ -13,14 +13,15 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome" [(ngModel)]="nome" name="nome">
       </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Sobrenome" [(ngModel)]="sobrenome" name="sobrenome">
+      </mat-form-field>
 
       <mat-form-field class="full-width">
         <input matInput placeholder="E-mail" [(ngModel)]="email" name="email">
       </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <input matInput placeholder="CPF/CNPJ" [(ngModel)]="cpfCnpj" name="cpfCnpj">
-      </mat-form-field>
+
 
       <mat-form-field class="full-width">
         <input matInput type="password" placeholder="Senha" [(ngModel)]="senha" name="senha">

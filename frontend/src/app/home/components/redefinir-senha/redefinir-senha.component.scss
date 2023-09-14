@@ -1,0 +1,37 @@
+/* redefinir-senha.component.scss */
+
+.redefinir-senha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('/../assets/cadastro.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .redefinir-senha-card {
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .mensagem-sucesso {
+    color: #510202;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
