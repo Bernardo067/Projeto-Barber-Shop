@@ -15,7 +15,7 @@ export class CadastroService {
   constructor(private http: HttpClient) { }
 
   register(request: Usuario): Observable<string> {
-    const apiUrl = `${this.url}/register`;
+    const apiUrl = `${this.url}`;
 
     return this.http.post<string>(apiUrl, request).pipe(
       catchError((error: HttpErrorResponse) => {

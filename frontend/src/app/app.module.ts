@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeModule } from './home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeModule } from './home/home.module';
     MatInputModule,
     TooltipModule.forRoot(),
     AppRoutingModule ,
-    HomeModule
+    HomeModule,
+    HttpClientModule
     // Certifique-se de importar o ComponentsModule aqui
   ],
   providers: [],

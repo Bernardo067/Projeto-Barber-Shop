@@ -15,12 +15,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { ComponentsRoutingModule } from "./home-routing.module";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-senha.component';
+import { CadastroService } from "./service/cadastro.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     LoginComponent,
     CadastroComponent,
     RedefinirSenhaComponent
+    
   ],
   imports: [  
     AppMaterialModule,
@@ -34,7 +37,11 @@ import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-
     MatInputModule,
     MatSortModule,
     MatFormFieldModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    HttpClientModule
+  ],
+  providers:[
+    CadastroService
   ]
 })
 export class HomeModule { }
