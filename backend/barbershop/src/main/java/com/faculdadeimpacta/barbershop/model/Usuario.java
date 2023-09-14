@@ -1,38 +1,86 @@
 package com.faculdadeimpacta.barbershop.model;
 
-import lombok.Data;
-import com.faculdadeimpacta.barbershop.Role;
+import enums.UsuarioRole;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.Collections;
 
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 @Entity
-@Data
-public class Usuario{
+public class Usuario implements UserDetails {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String sobrenome;
     private String email;
     private String senha;
-    private String cpf;
-
-
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private UsuarioRole usuarioRole;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
-    public Usuario(){}
-    public Usuario(Long id, String nome, String email, String senha, String cpf, Role role) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.role = role;
-    }
+
+  public Usuario(String nome,
+                 String sobrenome,
+                 String email,
+                 String senha,
+                 UsuarioRole usuarioRole
+                 ) {
+    this.nome = nome;
+    this.sobrenome = sobrenome;
+    this.email = email;
+    this.senha = senha;
+    this.usuarioRole = usuarioRole;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    SimpleGrantedAuthority authority =
+      new SimpleGrantedAuthority(usuarioRole.name());
+    return Collections.singletonList(authority);
+  }
+
+  @Override
+  public String getPassword() {
+    return senha;
+  }
+
+  @Override
+  public String getUsername() {
+    return email;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return !locked;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return enabled;
+  }
 }

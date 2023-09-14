@@ -1,4 +1,4 @@
-package com.faculdadeimpacta.barbershop;
+package com.faculdadeimpacta.barbershop.controllers;
 
 import com.faculdadeimpacta.barbershop.model.Usuario;
 import com.faculdadeimpacta.barbershop.service.UsuarioService;
@@ -34,24 +34,6 @@ public class UsuarioController {
         return usuario.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioService.buscarUsuarioPorId(id);
-
-        if (usuarioExistente.isPresent()) {
-            Usuario usuarioAtual = usuarioExistente.get();
-            usuarioAtual.setNome(usuario.getNome());
-            usuarioAtual.setSobrenome(usuario.getSobrenome());
-            usuarioAtual.setEmail(usuario.getEmail());
-            usuarioAtual.setCpf(usuario.getCpf());
-            usuarioAtual.setRole(usuario.getRole());
-            usuarioAtual.setEmail(usuario.getEmail());
-            Usuario usuarioAtualizado = usuarioService.atualizarUsuario(usuarioAtual);
-            return ResponseEntity.ok("Usuário atualizado com sucesso");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
