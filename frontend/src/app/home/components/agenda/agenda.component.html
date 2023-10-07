@@ -1,0 +1,60 @@
+<div class="agenda-container">
+    <h2 >
+        <button mat-button routerLink="/PgUsuario">
+            <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        Agendamento
+    </h2>
+
+    <div class="month-selector">
+        <button  mat-icon-button class="custom-icon-button"(click)="navegarSemana(-1)">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <mat-form-field>
+            <mat-select placeholder="Mês" [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+                <!-- Opções para escolher o mês -->
+                <mat-option *ngFor="let month of months; let i = index" [value]="i + 1">{{ month }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+            <mat-select placeholder="Ano" [(ngModel)]="selectedYear" (change)="onMonthChange()">
+                <!-- Opções para escolher o ano (você pode ajustar o intervalo de anos) -->
+                <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Botões de navegação de semana anterior e seguinte -->
+        <button  mat-icon-button class="custom-icon-button" (click)="navegarSemana(1)">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+
+    <div class="week-view">
+        <table class="appointments">
+            <tr>
+                <th></th>
+                <th *ngFor="let day of weekDays" class="day-header">
+                    {{ day.name.substr(0, 3) }} {{ day.date | date:'dd'}}
+                </th>
+            </tr>
+            <tr *ngFor="let time of times; let i = index">
+                <td class="time">{{ time }}</td>
+                <td *ngFor="let day of weekDays; let j = index" class="appointment">
+                    <div class="appointment-container">
+                        <input type="text" [(ngModel)]="appointments[getFormattedDate(day.date) + ' ' + times[i]]"
+                            placeholder="Nome do agendamento">
+                        <button mat-icon-button color="primary" (click)="agendar(j, i)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <!-- Verifique se appointments está definido antes de acessá-lo -->
+                        <button mat-icon-button color="warn" (click)="excluir(day.date, i, j)"
+                            *ngIf="appointments[getFormattedDate(day.date) + ' ' + times[i]] !== undefined">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

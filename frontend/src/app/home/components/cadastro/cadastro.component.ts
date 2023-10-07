@@ -1,100 +1,68 @@
-import { CadastroService } from './../../service/cadastro.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Usuario } from '../../model/usuario';
-import { take } from 'rxjs/operators';
-
-
-
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss']
 })
-
-
-
 export class CadastroComponent implements OnInit {
-  mostrarMensagem: boolean = false;
-  registrationRequest: Usuario = {
-    nome: '',
-    sobrenome: '',
-    email: '',
-    senha: ''
-  };
+  mostrarMensagem: boolean = false; // Variável para controlar a exibição da mensagem
+  tipoCadastro: string = 'cliente'; // Valor padrão é 'cliente'
 
-  constructor(private router: Router, private cadastroService: CadastroService) {}
+  constructor(private router: Router) {}
 
   nome: string = '';
   email: string = '';
-  sobrenome: string = '';
+  cpfCnpj: string = '';
   senha: string = '';
   confirmarSenha: string = '';
 
-  
-
-
   realizarCadastro() {
-
+    // Lógica para realizar o cadastro
     if (this.validarCampos()) {
-      this.registrationRequest.nome = this.nome;
-      this.registrationRequest.sobrenome = this.sobrenome;
-      this.registrationRequest.email = this.email;
-      this.registrationRequest.senha = this.senha;
-      
-      console.log('Realizar Cadastro: Nome:', this.nome,'sobrenome', this.sobrenome, 'E-mail:', this.email, 'Senha:', this.senha);
-      this.onSubmit();
-      this.router.navigate(['/Login']);
-    } else {
+      // Se os campos estiverem válidos, você pode prosseguir com o cadastro
 
-      console.error('Campos inválidos. Por favor, verifique seus dados.');
+      // Aqui, você pode enviar os dados para o servidor ou realizar qualquer outra ação necessária
+      console.log('Realizar Cadastro: Nome:', this.nome, 'E-mail:', this.email, 'Senha:', this.senha);
+
+      // Redireciona para a página apropriada com base no tipo de cadastro
+      if (this.tipoCadastro === 'cliente') {
+        this.router.navigate(['/PáginaCliente']); // Substitua 'PáginaCliente' pelo caminho correto
+      } else if (this.tipoCadastro === 'barbeiro') {
+        this.router.navigate(['/PáginaBarbeiro']); // Substitua 'PáginaBarbeiro' pelo caminho correto
+      }
+    } else {
+      // Campos inválidos, exibe a mensagem de aviso
       this.mostrarMensagem = true;
     }
   }
 
   validarCampos(): boolean {
-    if (!this.nome || !this.email || !this.sobrenome || !this.senha || !this.confirmarSenha) {
+    // Aqui você pode implementar lógica de validação personalizada para os campos
+    // Retorna true se os campos estiverem válidos, caso contrário, retorna false
+
+    // Exemplo de validação simples: todos os campos são obrigatórios
+    if (!this.nome || !this.email || !this.cpfCnpj || !this.senha || !this.confirmarSenha) {
       return false;
     }
+
+    // Verifique se a senha e a confirmação de senha coincidem
     if (this.senha !== this.confirmarSenha) {
       return false;
     }
+
+    // Outras verificações personalizadas podem ser adicionadas aqui
+
     return true;
   }
 
   cancelarCadastro() {
-
+    // Redireciona o usuário para a página de login (ajuste o caminho conforme necessário)
     this.router.navigate(['/Login']);
   }
 
   ngOnInit() {
-
+    // Inicializações ou lógica de inicialização podem ser adicionadas aqui, se necessário
   }
-
-  onSubmit() {
-    // Certifique-se de que o objeto registrationRequest está populado corretamente
-    if (!this.registrationRequest.nome || !this.registrationRequest.sobrenome || !this.registrationRequest.email || !this.registrationRequest.senha) {
-      console.error('Campos inválidos. Por favor, verifique seus dados.');
-      this.mostrarMensagem = true;
-      return;
-    }
-  
-    // Chame o método do serviço de cadastro e envie o objeto registrationRequest
-    this.cadastroService.register(this.registrationRequest).pipe(take(1))
-      .subscribe(
-        (response: any) => {
-          console.log('Cadastro bem-sucedido:', response);
-          // Redirecione para a página de login ou faça qualquer outra ação necessária após o cadastro.
-          this.router.navigate(['/Login']);
-        },
-        (error: Error) => {
-          console.error('Erro no cadastro:', error);
-          // Lide com o erro de cadastro, exiba uma mensagem de erro ou faça qualquer outra ação necessária.
-        }
-      );
-  }
-
-  
 }

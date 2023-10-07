@@ -11,17 +11,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeModule } from './home/home.module';
-import { HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID } from '@angular/core';
 
-@NgModule({
+
+@NgModule({ 
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
     BrowserAnimationsModule,
+    MatToolbarModule,    
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
@@ -29,11 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     TooltipModule.forRoot(),
     AppRoutingModule ,
-    HomeModule,
-    HttpClientModule
+    HomeModule
     // Certifique-se de importar o ComponentsModule aqui
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

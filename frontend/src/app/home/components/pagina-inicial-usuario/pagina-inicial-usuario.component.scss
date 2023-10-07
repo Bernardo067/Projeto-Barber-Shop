@@ -1,0 +1,57 @@
+/* Estilo para o container principal */
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('/../assets/cadastro.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 5rem;
+      text-align: center;
+      text-transform: uppercase;
+      background-color:#570505;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  }
+  
+  /* Estilo para os botões */
+  button {
+    margin-top: 1rem;
+    background-color: #8f2308;
+    color: #fff;
+  
+    &:hover {
+      background-color: #4d8727;
+    }
+  }
+  
+  /* Estilo para as células da tabela */
+  th {
+    text-transform: uppercase;
+    background-color:#570505;
+    color: #fffbfb;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  td  {
+    text-transform: uppercase;
+    background-color: #dedede;
+    color: #570505;
+    padding: 15px;
+    border-radius: 10px;
+    border-radius: 8px;
+  
+  
+text-align: center; /* Centraliza horizontalmente o texto */
+  vertical-align: middle; /* Centraliza verticalmente o conteúdo */
+
+  }

@@ -7,6 +7,8 @@ import { AppMaterialModule } from "../shared/app-material/app-material.module";
 import { SharedModule } from "../shared/shared.module";
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,15 +19,21 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-senha.component';
 import { CadastroService } from "./service/cadastro.service";
 import { HttpClientModule } from "@angular/common/http";
+import { AgendaComponent } from './components/agenda/agenda.component';
+import { PaginaInicialUsuarioComponent } from './components/pagina-inicial-usuario/pagina-inicial-usuario.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     CadastroComponent,
-    RedefinirSenhaComponent
+    RedefinirSenhaComponent,
+    AgendaComponent,
+    PaginaInicialUsuarioComponent
     
   ],
   imports: [  
+    MatSelectModule ,
+    MatIconModule,
     AppMaterialModule,
     SharedModule,
     ReactiveFormsModule, 

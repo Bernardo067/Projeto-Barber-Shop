@@ -13,30 +13,32 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-
+    // Inicializações podem ser adicionadas aqui, se necessário
   }
 
-  entrar() {
-
+  Adenda() {
+    // Trocar o nome da agenda para "entrar" quando for alterado o htmlLógica para autenticar o usuário
     console.log('Entrar: Usuário:', this.usuario, 'Senha:', this.senha);
 
-    const autenticacaoBemSucedida = true;
+    // Simule uma autenticação bem-sucedida aqui ou use sua própria lógica de autenticação.
+    const autenticacaoBemSucedida = true; // Suponha que a autenticação foi bem-sucedida
+
     if (autenticacaoBemSucedida) {
-
-      this.router.navigate(['/PaginaProtegida']);
+      // Se a autenticação for bem-sucedida, redirecione para a página protegida.
+      this.router.navigate(['/PgUsuario']);
     } else {
-
+      // Caso contrário, redirecione para a página de cadastro.
       this.router.navigate(['/Cadastro']);
     }
   }
 
   cadastrar() {
-
+    // Lógica para redirecionar para a página de cadastro
     this.router.navigate(['/Cadastro']);
   }
 
   redefinirSenha() {
-
+    // Lógica para redirecionar para a página de redefinição de senha
     this.router.navigate(['/redefinirSenha']);
   }
 }
