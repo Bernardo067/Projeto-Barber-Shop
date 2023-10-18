@@ -45,3 +45,9 @@
   padding: 10px; /* Espaçamento interno */
   text-align: center; /* Alinhamento de texto central */
 }
+
+.mat-form-field-invalid {
+  .mat-form-field-label, .mat-label {
+    color: red;
+  }
+}

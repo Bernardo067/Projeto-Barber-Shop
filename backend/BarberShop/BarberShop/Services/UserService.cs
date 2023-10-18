@@ -1,6 +1,8 @@
 ﻿using BarberShop.Data;
 using BarberShop.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using static BarberShop.Util.ValidaSenha;
 
 namespace BarberShop.Services
 {
@@ -71,6 +73,18 @@ namespace BarberShop.Services
             {
                 existingUser.Password = password;
             }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdatePassword(UpdatePasswordRequest updatePasswordRequest)
+        {
+            var existingUser = await _context.Users.SingleOrDefaultAsync(u => u.Email == updatePasswordRequest.Email);
+            if (existingUser == null) throw new ApplicationException("Émail não cadastrado!");
+
+            if (!ValidacaoSenha(updatePasswordRequest.newPassword)) throw new ApplicationException("Senha não tem os requisitos necessários");
+
+            existingUser.Password = updatePasswordRequest.newPassword;
 
             await _context.SaveChangesAsync();
         }

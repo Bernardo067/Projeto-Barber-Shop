@@ -1,8 +1,10 @@
-﻿using BarberShop.Models;
+﻿using BarberShop.Data;
+using BarberShop.Models;
 using BarberShop.Services;
 using BarberShop.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,12 +19,14 @@ namespace BarberShop.Controllers
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
         private readonly ITokenService _tokenService;
+        private readonly ApplicationDbContext _context;
 
-        public UserController(IUserService userService, IConfiguration configuration, ITokenService tokenService)
+        public UserController(IUserService userService, IConfiguration configuration, ITokenService tokenService, ApplicationDbContext context)
         {
             _userService = userService;
             _configuration = configuration;
             _tokenService = tokenService;
+            _context = context;
         }
 
         [AllowAnonymous]
@@ -32,7 +36,7 @@ namespace BarberShop.Controllers
             var user = await _userService.Authenticate(loginRequest.Email, loginRequest.Password);
 
             if (user == null)
-                return Unauthorized("Credenciais inválidas.");
+                return BadRequest("Credenciais inválidas.");
 
             var token = _tokenService.GenerateJwtToken(user);
             return Ok(new { Token = token, UserId = user.Id });
@@ -112,6 +116,20 @@ namespace BarberShop.Controllers
             }
         }
 
-        
+        [AllowAnonymous]
+        [HttpPost("updatepassword")]
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordRequest request)
+        {
+            try
+            {
+                var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == request.Email);
+                await _userService.UpdatePassword(request);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

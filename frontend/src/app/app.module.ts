@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeModule } from './home/home.module';
 import { LOCALE_ID } from '@angular/core';
+import { CadastroService } from './home/service/cadastro.service';
 
 
 @NgModule({ 
@@ -33,7 +34,7 @@ import { LOCALE_ID } from '@angular/core';
     HomeModule
     // Certifique-se de importar o ComponentsModule aqui
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [CadastroService, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
