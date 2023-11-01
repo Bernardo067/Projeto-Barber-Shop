@@ -4,15 +4,13 @@ import { LoginComponent } from './components/login/login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-senha.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
-import { PaginaInicialUsuarioComponent } from './components/pagina-inicial-usuario/pagina-inicial-usuario.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'Login' },
   { path: 'Login', component: LoginComponent },
   { path: 'Cadastro', component: CadastroComponent },
   { path: 'redefinirSenha', component: RedefinirSenhaComponent },
-  { path: 'Adenda', component:  AgendaComponent },
-  { path: 'PgUsuario', component:  PaginaInicialUsuarioComponent },
+  { path: 'Agenda', component:  AgendaComponent },
 ];
 
 

@@ -1,7 +1,7 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, registerLocaleData } from "@angular/common";
 import { CadastroComponent } from "./components/cadastro/cadastro.component";
 import { LoginComponent } from "./components/login/login.component";
-import { NgModule } from "@angular/core";
+import { LOCALE_ID, NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppMaterialModule } from "../shared/app-material/app-material.module";
 import { SharedModule } from "../shared/shared.module";
@@ -20,15 +20,18 @@ import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-
 import { CadastroService } from "./service/cadastro.service";
 import { HttpClientModule } from "@angular/common/http";
 import { AgendaComponent } from './components/agenda/agenda.component';
-import { PaginaInicialUsuarioComponent } from './components/pagina-inicial-usuario/pagina-inicial-usuario.component';
+import localePt from '@angular/common/locales/pt';
 
-@NgModule({
+registerLocaleData(localePt);
+
+@NgModule({  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   declarations: [
     LoginComponent,
     CadastroComponent,
     RedefinirSenhaComponent,
     AgendaComponent,
-    PaginaInicialUsuarioComponent
+
+    
     
   ],
   imports: [  
@@ -48,8 +51,6 @@ import { PaginaInicialUsuarioComponent } from './components/pagina-inicial-usuar
     TooltipModule.forRoot(),
     HttpClientModule
   ],
-  providers:[
-    CadastroService
-  ]
+  
 })
 export class HomeModule { }
