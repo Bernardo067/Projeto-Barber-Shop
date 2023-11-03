@@ -29,5 +29,14 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
+  },
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-angular:tsconfig",
+      "options": {
+        "tsConfig": "tsconfig.json" // Certifique-se de que o caminho está correto
+      }
+    }
   }
+  
 }

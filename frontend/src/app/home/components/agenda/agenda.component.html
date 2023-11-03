@@ -1,7 +1,7 @@
 <div class="agenda-container">
     <h2 >
-        <button mat-button routerLink="/PgUsuario">
-            <mat-icon>arrow_back</mat-icon> Voltar
+        <button mat-button routerLink="/Login">
+            <mat-icon>arrow_back</mat-icon> Sair
         </button>
         Agendamento
     </h2>
@@ -11,14 +11,15 @@
             <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
         <mat-form-field>
-            <mat-select placeholder="Mês" [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+            <mat-select placeholder="Mês" [(ngModel)]="selectedMonth" (change)="onMonthChange(selectedMonth)">
+
                 <!-- Opções para escolher o mês -->
                 <mat-option *ngFor="let month of months; let i = index" [value]="i + 1">{{ month }}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field style="margin-left: 10px;">
-            <mat-select placeholder="Ano" [(ngModel)]="selectedYear" (change)="onMonthChange()">
+            <mat-select placeholder="Ano" [(ngModel)]="selectedYear" (change)="onYearChange(selectedYear)">
                 <!-- Opções para escolher o ano (você pode ajustar o intervalo de anos) -->
                 <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
             </mat-select>

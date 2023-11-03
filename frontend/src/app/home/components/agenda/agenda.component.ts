@@ -10,7 +10,7 @@ export class AgendaComponent {
   selectedMonth: number = new Date().getMonth() + 1; // Mês atual
   selectedYear: number = new Date().getFullYear(); // Ano atual
   selectedWeek: number = 0; // Semana atual (0 representa a semana atual)
-
+  times: string[] = this.generateTimes();
   // Nomes dos meses
   months: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -28,50 +28,37 @@ export class AgendaComponent {
   appointments: { [key: string]: string } = {}; // Agora armazenamos nomes de agendamento diretamente por chave
   appointmentName: string | null = null;
 
+  // Adicione um array de controle para rastrear se cada slot de agendamento foi agendado
+  slotAgendado: boolean[][];
+
   constructor(private router: Router) {
     this.generateWeekDays();
+    this.slotAgendado = []; // Inicialize slotAgendado como um array vazio
+    this.initializeSlotAgendado();
   }
 
-  voltarPagina() {
-    // Implemente o comportamento desejado para o botão "Voltar".
-    // Por exemplo, navegar de volta para a página anterior:
-    this.router.navigate(['/PgUsuario']); // Substitua '/pagina-anterior' pelo caminho da sua página anterior.
+  // Função para inicializar o array de controle
+  initializeSlotAgendado() {
+    this.slotAgendado = new Array(this.times.length);
+    for (let i = 0; i < this.times.length; i++) {
+      this.slotAgendado[i] = new Array(this.weekDays.length).fill(false);
+    }
   }
-
-  // Função para formatar a data em português
-  getFormattedDate(day: Date): string {
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      month: 'long'
-    };
-
-    const formattedDate = day.toLocaleDateString('pt', options);
-
-    return formattedDate;
-  }
-
-  times = this.generateTimes();
 
   agendar(dayIndex: number, timeIndex: number) {
-    // Calcula a data baseada no índice do dia
-    const date = new Date(this.selectedYear, this.selectedMonth - 1, 1);
-    date.setDate(date.getDate() + (dayIndex + this.selectedWeek * 7) - 1); // Subtrai 1 para compensar o índice baseado em 1
-
-    const formattedDate = this.getFormattedDate(date);
-    const time = this.times[timeIndex];
-    const dateTimeKey = `${formattedDate} ${time}`;
-
-    // Verifique se o nome do agendamento não está vazio
     if (this.appointmentName) {
-      // Usamos a mesma chave (dateTimeKey) para armazenar o nome do agendamento
+      this.slotAgendado[timeIndex][dayIndex] = true;
+      const date = new Date(this.selectedYear, this.selectedMonth - 1, 1);
+      date.setDate(date.getDate() + (dayIndex + this.selectedWeek * 7) - 1);
+      const formattedDate = this.getFormattedDate(date);
+      const time = this.times[timeIndex];
+      const dateTimeKey = `${formattedDate} ${time}`;
       this.appointments[dateTimeKey] = this.appointmentName;
+      this.appointmentName = null; // Limpe o nome do agendamento
       console.log(`Compromisso agendado para ${dateTimeKey}`);
     } else {
       console.log('O nome do agendamento não pode estar vazio.');
     }
-
-    // Limpe o nome do agendamento após agendar
-    this.appointmentName = null;
   }
 
   excluir(date: Date, timeIndex: number, dayIndex: number) {
@@ -81,6 +68,7 @@ export class AgendaComponent {
 
     // Adicione a lógica de exclusão aqui (por exemplo, enviar para o servidor).
     delete this.appointments[dateTimeKey]; // Remove o compromisso
+    this.slotAgendado[timeIndex][dayIndex] = false; // Marque o slot como não agendado
     console.log(`Compromisso excluído em ${dateTimeKey}`);
   }
 
@@ -159,9 +147,27 @@ export class AgendaComponent {
   }
 
   // Esta função é chamada quando há uma mudança no mês selecionado no dropdown
-  onMonthChange() {
+  onMonthChange(selectedMonth: number) {
+    this.selectedMonth = selectedMonth;
     // Quando o mês é alterado, atualize os dias da semana correspondentes
     this.selectedWeek = 0; // Reset da semana para a atual
     this.generateWeekDays();
+  }
+
+  onYearChange(selectedYear: number) {
+    this.selectedYear = selectedYear;
+    // Atualize os dias da semana correspondentes ao novo ano selecionado
+    this.generateWeekDays();
+  }
+
+  getFormattedDate(day: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      month: 'long'
+    };
+
+    const formattedDate = day.toLocaleDateString('pt', options);
+
+    return formattedDate;
   }
 }
