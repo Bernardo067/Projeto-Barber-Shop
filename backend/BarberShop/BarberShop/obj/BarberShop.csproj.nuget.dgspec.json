@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj": {}
+    "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj": {
+    "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
+        "projectUniqueName": "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
         "projectName": "BarberShop",
-        "projectPath": "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
+        "projectPath": "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\obj\\",
+        "outputPath": "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -86,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.2.23502.2\\RuntimeIdentifierGraph.json"
         }
       }
     }

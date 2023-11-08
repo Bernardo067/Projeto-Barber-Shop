@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "umzSi5QKgD372VzIFFNH5DcOKtWTKPDvg+HBvsJili6mU0IjKGMZtrUWbUbKNvKqFQck7u8qeDFL/ww+bBkVHQ==",
+  "dgSpecHash": "W2iCRTf4DufwsT1DOB80GrzE2yIpz2wyH5rXjeLgAgasLdOfLutmGRN/Gct7Gr/rJMyQNr9z+0ma01K2B6BkeQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\Faculdade Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
+  "projectFilePath": "C:\\Projeto Impacta\\Projeto-Barber-Shop\\backend\\BarberShop\\BarberShop\\BarberShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

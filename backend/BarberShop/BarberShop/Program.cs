@@ -33,6 +33,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IAgendamentoService, AgendamentoService>();
 
 // Configure CORS to allow requests from any origin
 builder.Services.AddCors(options =>

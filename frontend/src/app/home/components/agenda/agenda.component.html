@@ -45,7 +45,7 @@
                     <div class="appointment-container">
                         <input type="text" [(ngModel)]="appointments[getFormattedDate(day.date) + ' ' + times[i]]"
                             placeholder="Nome do agendamento">
-                        <button mat-icon-button color="primary" (click)="agendar(j, i)">
+                        <button mat-icon-button color="primary" (click)="agendar(i,j)">
                             <mat-icon>add</mat-icon>
                         </button>
                         <!-- Verifique se appointments está definido antes de acessá-lo -->

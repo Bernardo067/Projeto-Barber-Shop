@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AgendamentoService } from '../../service/agendamento.service';
+import { Agendamento } from '../../model/agendamento';
 
 @Component({
   selector: 'app-agenda',
@@ -16,6 +18,9 @@ export class AgendaComponent {
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
+  agendamento: Agendamento ={
+    nome: ''
+  }
 
   // Você pode ajustar o intervalo de anos
   years: number[] = [2023, 2024, 2025, 2026, 2027];
@@ -26,16 +31,19 @@ export class AgendaComponent {
 
   // Defina a propriedade appointments como um objeto vazio
   appointments: { [key: string]: string } = {}; // Agora armazenamos nomes de agendamento diretamente por chave
-  appointmentName: string | null = null;
+  appointmentName: string = '';
+  nome: string = '';
 
   // Adicione um array de controle para rastrear se cada slot de agendamento foi agendado
   slotAgendado: boolean[][];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private agendamentoService: AgendamentoService) {
     this.generateWeekDays();
     this.slotAgendado = []; // Inicialize slotAgendado como um array vazio
     this.initializeSlotAgendado();
   }
+
+ 
 
   // Função para inicializar o array de controle
   initializeSlotAgendado() {
@@ -53,11 +61,25 @@ export class AgendaComponent {
       const formattedDate = this.getFormattedDate(date);
       const time = this.times[timeIndex];
       const dateTimeKey = `${formattedDate} ${time}`;
-      this.appointments[dateTimeKey] = this.appointmentName;
-      this.appointmentName = null; // Limpe o nome do agendamento
+      this.appointments[dateTimeKey] = this.appointmentName;     
+      if (this.appointmentName && this.appointmentName.trim() !== null) { // Verifique se o nome não está vazio ou contém apenas espaços em branco
+      
+        this.agendamento.nome = this.appointmentName;
+        this.agendamentoService.agendarHorario(this.agendamento).subscribe(
+          response => {
+            console.log('Agendamento realizado!', response);
+          },
+          error => {
+            console.error('Erro ao fazer agendamento:', error);
+          }
+        );
+      } else {
+        console.error('Não há pelo menos duas strings no objeto appointments.');
+      }
       console.log(`Compromisso agendado para ${dateTimeKey}`);
     } else {
       console.log('O nome do agendamento não pode estar vazio.');
+      
     }
   }
 
@@ -160,12 +182,16 @@ export class AgendaComponent {
     this.generateWeekDays();
   }
 
+  salvarAgendamento() {
+   
+    }         
+  
+  
   getFormattedDate(day: Date): string {
     const options: Intl.DateTimeFormatOptions = {
       weekday: 'long',
       month: 'long'
     };
-
     const formattedDate = day.toLocaleDateString('pt', options);
 
     return formattedDate;
