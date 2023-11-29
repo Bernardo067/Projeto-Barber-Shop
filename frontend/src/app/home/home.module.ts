@@ -21,6 +21,7 @@ import { CadastroService } from "./service/cadastro.service";
 import { HttpClientModule } from "@angular/common/http";
 import { AgendaComponent } from './components/agenda/agenda.component';
 import localePt from '@angular/common/locales/pt';
+import { TelaDoBarbeiroComponent } from "./components/tela-do-barbeiro/tela-do-barbeiro.component";
 
 registerLocaleData(localePt);
 
@@ -30,6 +31,7 @@ registerLocaleData(localePt);
     CadastroComponent,
     RedefinirSenhaComponent,
     AgendaComponent,
+    TelaDoBarbeiroComponent,
 
     
     

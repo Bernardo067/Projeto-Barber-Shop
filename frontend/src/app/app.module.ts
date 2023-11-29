@@ -15,9 +15,11 @@ import { LOCALE_ID } from '@angular/core';
 import { CadastroService } from './home/service/cadastro.service';
 
 
+
 @NgModule({ 
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { CadastroService } from './home/service/cadastro.service';
     TooltipModule.forRoot(),
     AppRoutingModule ,
     HomeModule
+    
     // Certifique-se de importar o ComponentsModule aqui
   ],
   providers: [CadastroService, { provide: LOCALE_ID, useValue: 'pt' }],
