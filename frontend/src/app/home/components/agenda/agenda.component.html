@@ -20,12 +20,11 @@
 
         <mat-form-field style="margin-left: 10px;">
             <mat-select placeholder="Ano" [(ngModel)]="selectedYear" (change)="onYearChange(selectedYear)">
-                <!-- Opções para escolher o ano (você pode ajustar o intervalo de anos) -->
                 <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <!-- Botões de navegação de semana anterior e seguinte -->
+      
         <button  mat-icon-button class="custom-icon-button" (click)="navegarSemana(1)">
             <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
@@ -48,7 +47,7 @@
                         <button mat-icon-button color="primary" (click)="agendar(i,j)">
                             <mat-icon>add</mat-icon>
                         </button>
-                        <!-- Verifique se appointments está definido antes de acessá-lo -->
+                        
                         <button mat-icon-button color="warn" (click)="excluir(day.date, i, j)"
                             *ngIf="appointments[getFormattedDate(day.date) + ' ' + times[i]] !== undefined">
                             <mat-icon>delete</mat-icon>
