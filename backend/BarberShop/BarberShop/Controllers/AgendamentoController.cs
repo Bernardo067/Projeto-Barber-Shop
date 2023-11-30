@@ -2,6 +2,7 @@
 using BarberShop.Models;
 using BarberShop.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -40,6 +41,47 @@ namespace BarberShop.Controllers
             {
                 return StatusCode(500, $"Ocorreu um erro ao criar o agendamento: {ex.Message}");
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Agendamento>>> GetAgendamentosAsync()
+        {
+            var agendamentos = await _agendamentoService.GetAgendamentos();
+            return Ok(agendamentos);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Agendamento>> EditarAgendamento(Guid id, Agendamento agendamento)
+        {
+            if (id != agendamento.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await _agendamentoService.EditarAgendamento(agendamento);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // Trate a exceção conforme necessário
+                throw;
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Agendamento>> DeletarAgendamento(Guid id)
+        {
+            var agendamento = await _agendamentoService.GetAgendamentoPorId(id);
+            if (agendamento == null)
+            {
+                return NotFound();
+            }
+
+            await _agendamentoService.DeletarAgendamento(agendamento);
+            return agendamento;
         }
     }
 }

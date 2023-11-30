@@ -1,5 +1,6 @@
 ﻿using BarberShop.Data;
 using BarberShop.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BarberShop.Services
 {
@@ -22,6 +23,28 @@ namespace BarberShop.Services
             _context.Agendamentos.Add(agendamento);
             await _context.SaveChangesAsync();
             return agendamento;
+        }
+
+        public async Task<List<Agendamento>> GetAgendamentos()
+        {
+            return await _context.Agendamentos.ToListAsync();
+        }
+
+        public async Task EditarAgendamento(Agendamento agendamento)
+        {
+            _context.Agendamentos.Update(agendamento);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeletarAgendamento(Agendamento agendamento)
+        {
+            _context.Agendamentos.Remove(agendamento);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Agendamento> GetAgendamentoPorId(Guid id)
+        {
+            return await _context.Agendamentos.FindAsync(id);
         }
     }
 }
